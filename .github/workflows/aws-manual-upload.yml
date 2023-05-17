@@ -19,10 +19,10 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::760178553019:role/service-role/wto-s3-role
+          role-to-assume: arn:aws:iam::760178553019:role/aws-oidc-test-role
           role-session-name: samplerolesession
           aws-region: ${{ env.AWS_REGION }}
       # Upload a file to AWS s3
       - name:  Copy index.html to s3
         run: |
-          aws s3 cp ./*.html s3://${{ env.BUCKET_NAME }}/
+          aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
